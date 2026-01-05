@@ -1,4 +1,4 @@
-package app;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
-
+/** @author Aya Abu Latifeh */
 public class EscapeApp {
 
     public static final String SAVE_FILE_NAME = "save";
