@@ -59,12 +59,38 @@ public class EscapeApp {
                 this.startGame();
                 break;
             case "2":
+                if (isGameRunning()) {
+                    this.resumeGame();
+                } else{
+                    System.err.println("Es läuft leider noch kein Spiel. Bitte starte ein neues Spiel."); 
                 break;
-            // ...
-            case "6":
-                break;
+                }
+            case "3":
+                if (hasSavedGame()) {
+                    this.loadGame();
+                } else{
+                    System.out.println("Es existiert noch kein gespeichertes Spiel. Bitte speichere zuerst ein Spiel.");
+                    break;
+                }
+                case "4":
+                    if (isGameRunning() && !isGameFinished()) {
+                        this.saveGame();
+                    }else{
+                        System.out.println("Es läuft kein Spiel oder das Spiel ist bereits beendet. Bitte starte ein neues Spiel.");
+                        break;
+                    }
+                case "5":
+                        if(hasSavedGame()) {
+                            this.deleteGame();
+                        }else{
+                            System.out.println("Es existiert kein gespeichertes Spiel zum Löschen.");
+                            break;
+                        }
+                case "6":
+                
+                    System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
             default:
-                System.out.println("Invalid input. Please choose a correct number between 1 and 6");
+                System.out.println("Ungültige Eingabe. Bitte wähle eine zahl zwischen 1-6.");
                 break;
         }
     }
