@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 /**@author Aya Abu Latifeh 
  * @author Hanna Lübken
+ * Klasse EscapeApp ist die Hauptklasse des Escape-Spiels.Sie verwaltet das Hauptmenü und  die Spielzustände.
+ * Sie ermöglicht das starten eines Spiels, das laden, fortsetzen, speichern, löschen und beeenden.
  */
-/**Test */
+
 public class EscapeApp {
 
     public static final String SAVE_FILE_NAME = "save";
