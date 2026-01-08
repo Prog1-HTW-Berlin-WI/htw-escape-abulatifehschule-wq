@@ -34,12 +34,16 @@ public class EscapeApp {
     }
 
     private void showMainMenu() {
-        System.out.println("You're in the main menu");
-        System.out.println("What do you want to do next?");
-        System.out.println("(1) Start new game");
-        System.out.println("(6) Quit");
-        System.out.println("");
-        System.out.println("Please choose a number between 1 and 6: ");
+        System.out.println("Du bist im Hauptmenü.");
+        System.out.println("Was möchtest du als nächstes tun?");
+        System.out.println("(1) Neues Spiel starten");
+        System.out.println("(2) Spiel fortsetzen");
+        System.out.println("(3) Spiel laden");
+        System.out.println("(4) Spiel speichern");
+        System.out.println("(5) Spiel löschen");
+        System.out.println("(6) Spiel Beenden");
+        System.out.println("=====================");
+        System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
     }
 
     private String readUserInput() {
