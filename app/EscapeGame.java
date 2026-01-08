@@ -1,5 +1,4 @@
-
-
+import java.util.Scanner;
 import model.Hero;
 import model.HTWRoom;
 
@@ -16,8 +15,36 @@ public class EscapeGame {
     private boolean gameFinished = false;
 
     public EscapeGame() {
-        this.hero = new Hero();
+       /** Einführungstext anzeigen */
+      showIntroduction();
+
+        String heroName = playerNameInput();
+         this.hero = new Hero(heroName);
     }
+    private void showIntroduction() {
+        System.out.println("Willkommen zum HTW Escape Game! NO WAY OUT!");
+        System.out.println("Folgendes Szenario erwartet dich :");
+        System.out.println("=======================================================");
+        System.out.println("Es ist ein ganz normaler Tag an der HTW Berlin, als plötzlich alle Türen verschlossen werden.");
+        System.out.println("Es führt kein Weg mehr hinaus. Deine Aufgabe ist es, Hinweise zu finden und Rätsel zu lösen, um Auswege zu finden und am ende zu entkommen.");
+        System.out.println("Das Ziel ist es, Frau Majunkte zu finden.");
+        System.out.println("Um sie zu finden, musst du jedoch vorher alle Übungsleiter finden und ihre Unterschrift sammeln.");
+        System.out.println("Aber Achtung! Die HTW ist befallen von gefährlichen Kreaturen, die dich aufhalten können.");
+        System.out.println("Sei vorsichtig und nutze deine Fähigkeiten, um zu überleben und zu entkommen!");
+        System.out.println("Viel Glück!");
+    }
+  
+    private String playerNameInput() {
+    System.out.println (" Bitte gebe deinem Helden einen Namen: ");
+    Scanner scanner = new Scanner(System.in);
+    String heroName = scanner.nextLine();
+    System.out.println(" Dein Held heißt nun: " + heroName);
+    System.out.println("Viel Erfolg, " + heroName + "!");
+    return heroName;
+   
+    }
+
+
 
     public boolean isGameRunning() {
         return gameRunning;

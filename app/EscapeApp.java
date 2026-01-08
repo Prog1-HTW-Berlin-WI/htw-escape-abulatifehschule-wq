@@ -46,11 +46,14 @@ public class EscapeApp {
         System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
     }
 
+    private boolean isGameRunning() {
     private String readUserInput() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
-        // TBD
+        
+        // TBD 
         return userInput;
+    
     }
 
     private void handleUserInput(String input) {
@@ -67,6 +70,7 @@ public class EscapeApp {
                 }
             case "3":
                 if (hasSavedGame()) {
+                    System.out.println("Lade gespeichertes Spiel...");
                     this.loadGame();
                 } else{
                     System.out.println("Es existiert noch kein gespeichertes Spiel. Bitte speichere zuerst ein Spiel.");
@@ -87,11 +91,12 @@ public class EscapeApp {
                             break;
                         }
                 case "6":
-                
-                    System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
+                      System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
+                      break;
             default:
                 System.out.println("Ungültige Eingabe. Bitte wähle eine zahl zwischen 1-6.");
-                break;
+                
+            
         }
     }
 
@@ -101,6 +106,7 @@ public class EscapeApp {
     }
 
     private void resumeGame() {
+        System.out.println("Spiel wird fortgesetzt....");
         this.game.setGameRunning(true);
         this.game.run();
     }
@@ -127,7 +133,8 @@ public class EscapeApp {
         try (FileInputStream fis = new FileInputStream(SAVE_FILE_NAME);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             this.game = (EscapeGame) ois.readObject();
-            System.out.println("Game loaded!");
+            System.out.println("Spiel geladen!");
+            resumeGame();
         } catch (Exception ex) {
             System.err.println("Something went wrong while loading the game: " + ex.getMessage());
         }
