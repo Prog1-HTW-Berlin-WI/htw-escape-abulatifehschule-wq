@@ -2,7 +2,10 @@
 
 import model.Hero;
 import model.HTWRoom;
-/** @author Aya Abu Latifeh */
+
+/**@author Aya Abu Latifeh 
+ * @author Hanna Lübken
+ */
 
 public class EscapeGame {
     private final Hero hero;
