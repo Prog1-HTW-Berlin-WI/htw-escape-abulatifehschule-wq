@@ -1,7 +1,12 @@
-package model;
+
 
 import java.io.Serial;
 import java.io.Serializable;
+/** Die Klasse HtWRoom beschreibt einen Raum in der Htw Umgebung 
+ * @author Aya Abu-Latifeh
+* @author Hanna Lübken
+*/
+
 
 public class HTWRoom implements Serializable {
 
