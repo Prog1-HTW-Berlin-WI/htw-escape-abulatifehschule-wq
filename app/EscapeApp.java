@@ -19,6 +19,7 @@ public class EscapeApp {
     private EscapeGame game;
     private boolean gameRunning = true;
 
+
     public static void main(String[] args) {
         System.out.println("Welcome to the HTW escape");
         System.out.println("========================================\n");
@@ -46,7 +47,11 @@ public class EscapeApp {
         System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
     }
 
-    private boolean isGameRunning() {
+    /** Liest die Benutzereingabe ein und gibt sie zurück.
+     * @param input
+     * @return
+     */
+
     private String readUserInput() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
@@ -56,40 +61,48 @@ public class EscapeApp {
     
     }
 
+
+
+
     private void handleUserInput(String input) {
         switch (input) {
             case "1":
                 this.startGame();
                 break;
             case "2":
-                if (isGameRunning()) {
+               if(isGameRunning() && !isGameFinished()) {
                     this.resumeGame();
                 } else{
                     System.err.println("Es läuft leider noch kein Spiel. Bitte starte ein neues Spiel."); 
-                break;
+               
                 }
+                break;
             case "3":
                 if (hasSavedGame()) {
                     System.out.println("Lade gespeichertes Spiel...");
                     this.loadGame();
                 } else{
                     System.out.println("Es existiert noch kein gespeichertes Spiel. Bitte speichere zuerst ein Spiel.");
-                    break;
+                   
                 }
+                break;
+
                 case "4":
                     if (isGameRunning() && !isGameFinished()) {
                         this.saveGame();
                     }else{
                         System.out.println("Es läuft kein Spiel oder das Spiel ist bereits beendet. Bitte starte ein neues Spiel.");
-                        break;
+                        
                     }
+                    break;
                 case "5":
                         if(hasSavedGame()) {
                             this.deleteGame();
                         }else{
                             System.out.println("Es existiert kein gespeichertes Spiel zum Löschen.");
-                            break;
+                            
                         }
+                        break;
                 case "6":
                       System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
                       break;
