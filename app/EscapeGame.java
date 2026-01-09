@@ -26,8 +26,8 @@ public class EscapeGame {
         System.out.println("Folgendes Szenario erwartet dich :");
         System.out.println("=======================================================");
         System.out.println("Es ist ein ganz normaler Tag an der HTW Berlin, als plötzlich alle Türen verschlossen werden.");
-        System.out.println("Es führt kein Weg mehr hinaus. Deine Aufgabe ist es, Hinweise zu finden und Rätsel zu lösen, um Auswege zu finden und am ende zu entkommen.");
-        System.out.println("Das Ziel ist es, Frau Majunkte zu finden.");
+        System.out.println("Es führt kein Weg mehr hinaus. Deine Aufgabe ist es, Hinweise zu finden und Rätsel zu lösen, um zu entkommen.");
+        System.out.println("Der Schlüssel zum Ausgang  hat ausschließlich Frau Majunkte.");
         System.out.println("Um sie zu finden, musst du jedoch vorher alle Übungsleiter finden und ihre Unterschrift sammeln.");
         System.out.println("Aber Achtung! Die HTW ist befallen von gefährlichen Kreaturen, die dich aufhalten können.");
         System.out.println("Sei vorsichtig und nutze deine Fähigkeiten, um zu überleben und zu entkommen!");
