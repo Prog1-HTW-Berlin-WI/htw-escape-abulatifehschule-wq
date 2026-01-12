@@ -80,6 +80,10 @@ public class EscapeApp {
     }
 
 
+   /** Verarbeitet die Benutzereingabe und führt ausgewählte Aktion aus  
+    * Methode prüft die Eingabe und  ruft entsprechende Methoden aus.
+    * @param input Benutzereingabe als String
+    */
 
 
     private void handleUserInput(String input) {
@@ -131,25 +135,34 @@ public class EscapeApp {
             
         }
     }
-
+     /** Startet ein neues Spiel indem klasse EscapeGame aufgerufen wird.
+      * Anschließend wird mit resumeGame() das Spiel gestartet.
+      */
     private void startGame() {
         this.game = new EscapeGame();
         resumeGame();
 
     }
-
+    /** Setzt das Spiel fort
+     * Ruft dann die run()-Methode der EscapeGame klasse auf um Spiel fortzuführen.
+     */
     private void resumeGame() {
         System.out.println("Spiel wird fortgesetzt....");
         this.game.setGameRunning(true);
         this.game.run();
     }
 
+    /** Löscht das gespeicherte Spiel vom System
+     * Gibt Bestätigungsmeldung aus.
+     */
     private void deleteGame() {
         if (new File(SAVE_FILE_NAME).delete()) {
             System.out.println("Spiel gelöscht!");
         }
     }
-
+    /** Speichert aktuellen Spielstand
+     * falls ein Fehler auftritt wird eine Meldung ausgegeben.
+     */
     private void saveGame() {
         try (FileOutputStream fos = new FileOutputStream(SAVE_FILE_NAME);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -161,7 +174,9 @@ public class EscapeApp {
         }
         System.out.println("Spiel gespeichert!");
     }
-
+     /** Gepeichertes Spiel wird geladen
+      * Tritt ein fehler auf wird eine Fehlermeldung angezeigt.
+      */
     private void loadGame() {
         try (FileInputStream fis = new FileInputStream(SAVE_FILE_NAME);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -172,15 +187,23 @@ public class EscapeApp {
             System.err.println("Es ist ein Fehler beim Laden des Spiels aufgetreten: " + ex.getMessage());
         }
     }
-
+    /** prüft ob ein Spiel läuft
+     * @return true wenn Spiel läuft ansonsten false.
+     */
     private boolean isGameRunning() {
         return game != null;
     }
 
+      /** prüft ob das Spiel beendet wurde.
+       * @return true wenn Spiel beendet wurde ansonsten false.
+       */
     private boolean isGameFinished() {
         return game != null && game.isGameFinished();
     }
-
+    
+    /** prüft ob ein Spiel gespeichert wurde bzw. ein gespeichertes Spiel existiert
+     * @return true wenn es ein gespeichertes Spiel gibt ansonsten false.
+     */
     private boolean hasSavedGame() {
         return new File(SAVE_FILE_NAME).exists();
     }
