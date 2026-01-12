@@ -15,6 +15,9 @@ public class Hero implements Serializable {
     private static final long serialVersionUID = 3578735620108186013L;
 }
 private String name;
+private int healthPoint;
+private int experiencePoints;
+private Lecturer[] signedExerciseLeaders;
 
 public Hero(String name){
     this.name = name;
