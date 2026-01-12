@@ -32,6 +32,7 @@ public class EscapeGame {
         System.out.println("Aber Achtung! Die HTW ist befallen von gefährlichen Kreaturen, die dich aufhalten können.");
         System.out.println("Sei vorsichtig und nutze deine Fähigkeiten, um zu überleben und zu entkommen!");
         System.out.println("Viel Glück!");
+        System.out.println("==================================================================");
     }
   
     private String playerNameInput() {
@@ -65,7 +66,7 @@ public class EscapeGame {
     public void run() {
         System.out.println("The game has started. Or not?");
     }
-
+     
     public Hero getHero() {
         return hero;
     }

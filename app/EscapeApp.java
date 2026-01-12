@@ -18,11 +18,12 @@ public class EscapeApp {
     public static final String SAVE_FILE_NAME = "save";
     private EscapeGame game;
     private boolean gameRunning = true;
+    
 
 
     public static void main(String[] args) {
         System.out.println("Welcome to the HTW escape");
-        System.out.println("========================================\n");
+        System.out.println("========================================");
 
         EscapeApp app = new EscapeApp();
 
@@ -37,14 +38,25 @@ public class EscapeApp {
     private void showMainMenu() {
         System.out.println("Du bist im Hauptmenü.");
         System.out.println("Was möchtest du als nächstes tun?");
+        
         System.out.println("(1) Neues Spiel starten");
-        System.out.println("(2) Spiel fortsetzen");
-        System.out.println("(3) Spiel laden");
+        
+        if (isGameRunning() && !isGameFinished()){
+            System.out.println("(2) Spiel fortsetzen");
+        }
+        if (hasSavedGame()){
+         System.out.println("(3) Spiel laden");
+        }
+         if (isGameRunning()){
         System.out.println("(4) Spiel speichern");
+         }
+         if (hasSavedGame()){
         System.out.println("(5) Spiel löschen");
+         }
         System.out.println("(6) Spiel Beenden");
         System.out.println("=====================");
         System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
+
     }
 
     /** Liest die Benutzereingabe ein und gibt sie zurück.
@@ -70,10 +82,10 @@ public class EscapeApp {
                 this.startGame();
                 break;
             case "2":
-               if(isGameRunning() && !isGameFinished()) {
+               if(isGameRunning() ) {
                     this.resumeGame();
                 } else{
-                    System.err.println("Es läuft leider noch kein Spiel. Bitte starte ein neues Spiel."); 
+                    System.out.println("Es läuft leider noch kein Spiel. Bitte starte ein neues Spiel."); 
                
                 }
                 break;
@@ -105,6 +117,7 @@ public class EscapeApp {
                         break;
                 case "6":
                       System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
+                      
                       break;
             default:
                 System.out.println("Ungültige Eingabe. Bitte wähle eine zahl zwischen 1-6.");
@@ -116,6 +129,7 @@ public class EscapeApp {
     private void startGame() {
         this.game = new EscapeGame();
         resumeGame();
+
     }
 
     private void resumeGame() {
