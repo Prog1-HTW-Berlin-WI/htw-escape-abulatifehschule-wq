@@ -67,7 +67,7 @@ public class EscapeApp {
 
     /** Liest die Benutzereingabe ein und gibt sie zurück.
      * @param input
-     * @return
+     * @return UserInput als String.
      */
 
     private String readUserInput() {
