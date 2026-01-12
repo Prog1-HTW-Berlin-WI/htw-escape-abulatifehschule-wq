@@ -63,8 +63,9 @@ public class EscapeGame {
     }
 
     public void run() {
-        System.out.println("The game has started. Or not?");
-    }
+        System.out.println("Das Spiel läuft jetzt....");
+        
+ }
      
     public Hero getHero() {
         return hero;

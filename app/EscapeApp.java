@@ -54,7 +54,14 @@ public class EscapeApp {
          }
         System.out.println("(6) Spiel Beenden");
         System.out.println("=====================");
-        System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
+        if (isGameRunning() || hasSavedGame()){
+            System.out.println("Bitte gib eine Zahl zwischen 1-6 ein: ");
+        
+         } else{
+            System.out.println("Bitte wähle (1) um ein Spiel zu starten oder (6) um das Spiel zu beenden.");
+         }
+        
+        
 
     }
 
@@ -139,7 +146,7 @@ public class EscapeApp {
 
     private void deleteGame() {
         if (new File(SAVE_FILE_NAME).delete()) {
-            System.out.println("Game deleted!");
+            System.out.println("Spiel gelöscht!");
         }
     }
 
@@ -149,10 +156,10 @@ public class EscapeApp {
             oos.writeObject(game);
             oos.flush();
         } catch (Exception ex) {
-            System.err.println("Something went wrong while saving the game: " + ex.getMessage());
+            System.err.println("Es ist ein Fehler beim Speichern des Spiels aufgetreten " + ex.getMessage());
             return;
         }
-        System.out.println("Game saved!");
+        System.out.println("Spiel gespeichert!");
     }
 
     private void loadGame() {
@@ -162,7 +169,7 @@ public class EscapeApp {
             System.out.println("Spiel geladen!");
             resumeGame();
         } catch (Exception ex) {
-            System.err.println("Something went wrong while loading the game: " + ex.getMessage());
+            System.err.println("Es ist ein Fehler beim Laden des Spiels aufgetreten: " + ex.getMessage());
         }
     }
 
