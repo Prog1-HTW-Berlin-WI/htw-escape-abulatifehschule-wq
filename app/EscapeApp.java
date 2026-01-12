@@ -123,7 +123,7 @@ public class EscapeApp {
                         break;
                 case "6":
                       System.out.println("Spiel wird beendet. Bis zum nächsten Mal!!");
-                      
+                        System.exit(0);
                       break;
             default:
                 System.out.println("Ungültige Eingabe. Bitte wähle eine zahl zwischen 1-6.");
