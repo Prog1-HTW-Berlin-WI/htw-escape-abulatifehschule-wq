@@ -18,8 +18,10 @@ public class EscapeApp {
     private EscapeGame game;
     private boolean gameRunning = true;
     
-
-
+/**
+ * Startet das Spiel und initialisiert die Spielumgebung.
+ * @param args Parameter für Kommandozeile
+ */
     public static void main(String[] args) {
         System.out.println("Welcome to the HTW escape");
         System.out.println("========================================");
@@ -33,7 +35,10 @@ public class EscapeApp {
             System.out.println("====================");
         }
     }
-
+/**
+ * Methode zum anzeigen des Hauptmenüs auf der Konsole.
+ * Die Methode gibt alle verfügbaren Optionen an, wobei bestimmte Optionen nur dann eingeblendet werden, wenn die entsprechenden Bedingungen erfüllt sind.
+ */
     private void showMainMenu() {
         System.out.println("Du bist im Hauptmenü.");
         System.out.println("Was möchtest du als nächstes tun?");
