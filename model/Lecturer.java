@@ -1,11 +1,11 @@
 
 
 import java.io.Serializable;
-/** Die Klasse repräsentiert immer ein Übungsleiter und beschreibt dessen Eigenschaften
- * author Aya Abu-Latifeh
- * author Hanna Lübken
+/** 
+ * Die Klasse repräsentiert immer ein Übungsleiter und beschreibt dessen Eigenschaften
+ * @author Aya Abu-Latifeh
+ * @author Hanna Lübken
  */
-
 public class Lecturer implements Serializable {
 
     // Bitte serialVersionUID beibehalten, damit die Klasse bei der

@@ -1,7 +1,12 @@
 
 
 import java.io.Serializable;
-
+/**
+ * Repräsentiert den Spielcharakter/Halden im Spiel.
+ * Klasse verwaltet Eigenschaften des Helden.
+ * @author Aya Abu-Latifeh
+ * @author Hanna Lübken
+ */
 public class Hero implements Serializable {
 
     // Bitte serialVersionUID beibehalten, damit die Klasse bei der

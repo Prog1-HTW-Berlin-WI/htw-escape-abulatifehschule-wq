@@ -1,13 +1,12 @@
 import java.util.Scanner;
 import model.Hero;
 import model.HTWRoom;
-
-/**@author Aya Abu Latifeh 
- * @author Hanna Lübken
+/**
  * Klasse EscapeGame repräsentiert das Spiel selbst. Sie verwaltet den Spieler, die Räume und den Spielzustand.
  * Sie enthält die Methoden bzw. Logik zum Ausführen des Spiels.
+ * @author Aya Abu-Latifeh
+ * @author Hanna Lübken
  */
-
 public class EscapeGame {
     private final Hero hero;
     private final HTWRoom[] rooms = new HTWRoom[3];
