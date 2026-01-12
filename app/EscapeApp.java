@@ -41,7 +41,7 @@ public class EscapeApp {
  */
     private void showMainMenu() {
         System.out.println("Du bist im Hauptmenü.");
-        System.out.println("Was möchtest du als nächstes tun?");
+        System.out.println("Was möchtest du tun?");
         
         System.out.println("(1) Neues Spiel starten");
         
