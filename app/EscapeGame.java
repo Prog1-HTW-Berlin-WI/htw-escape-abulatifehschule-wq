@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import model.Hero;
+/**import model.Hero;
 import model.HTWRoom;
 /**
  * Klasse EscapeGame repräsentiert das Spiel selbst. Sie verwaltet den Spieler, die Räume und den Spielzustand.
@@ -8,8 +8,8 @@ import model.HTWRoom;
  * @author Hanna Lübken
  */
 public class EscapeGame {
-    private final Hero hero;
-    private final HTWRoom[] rooms = new HTWRoom[7];
+    private  Hero hero;
+    private  HTWRoom[] rooms = new HTWRoom[7];
     private int currentRoom = 0;
     private boolean gameRunning = true;
     private boolean gameFinished = false;
@@ -39,15 +39,13 @@ public class EscapeGame {
 
 
       rooms = new HTWRoom [7];
-      rooms [0]  = new HTWRoom ( "Haupteingang (Gebäude A)",
-        " "
-       ),;
-      rooms [1] = new HTWRoom ("Cafeteria (Gebäude B)");
-      rooms [2] = new HTWRoom ("PC-Pool (A142)", );
-      rooms [3] = new HTWRoom ("Bibliothek (Gebäude A)");
-      rooms [4] = new HTWRoom ("Seminarraumb(A219)");
-      rooms [5] = new HTWRoom ("Sporthalle");
-      rooms [6] = new HTWRoom ( "Audimax (A238)");
+      rooms [0]  = new HTWRoom ( "Haupteingang (Gebäude A)", " Dies ist der Haupteingang der HTW...", null);
+      rooms [1] = new HTWRoom ("Cafeteria (Gebäude B)" , "beschreibung " ,  lec1);
+      rooms [2] = new HTWRoom ("PC-Pool (A142)", "beschreibung", lec2);
+      rooms [3] = new HTWRoom ("Bibliothek (Gebäude A)", "Beschreibung", lec3);
+      rooms [4] = new HTWRoom ("Seminarraumb(A219)", "beschreibung", lec4);
+      rooms [5] = new HTWRoom ("Sporthalle", "beschreibung", lec5);
+      rooms [6] = new HTWRoom ( "Audimax (A238)", "beschreibung", lec6);
 
       this.hero = new Hero(heroName);
 

@@ -12,7 +12,7 @@ public class HTWRoom implements  Serializable{
     // Speicherung als Datei (Serialisierung) und beim Laden (Deserialisierung)
     // konsistent bleibt und Versionierungsprobleme vermieden werden.
     private static final long serialVersionUID = 9065680017147292999L;
-
+}
 private String identifier;
 private String description;
 private Lecturer lecturer;
@@ -27,6 +27,18 @@ public HTWRoom(String identifier, String description, Lecturer lecturer){
         System.out.println("==================================================");
         System.out.println("Du befindest dich grade im Raum: " + this.identifier);
         System.out.println(this.description);
+
+        if ( this.lecturer !=null){
+            if (!this.lecturer.hasSigned()){
+                System.out.println("Übungsleiter im Raum: " + this.lecturer.getName());
+                System.out.println ("Beschreibung : " + this.lecturer.getDescription());
+             
+            }else{
+                System.out.println(" Du hast bereits die Unterschrift des Übungsleiters " + this.lecturer.getName() + " erhalten.");
+            }  
+            System.out.println ("==========================================================");
+
+        }
     
 
 }
