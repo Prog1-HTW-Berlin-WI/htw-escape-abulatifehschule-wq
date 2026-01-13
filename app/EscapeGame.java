@@ -9,17 +9,51 @@ import model.HTWRoom;
  */
 public class EscapeGame {
     private final Hero hero;
-    private final HTWRoom[] rooms = new HTWRoom[3];
+    private final HTWRoom[] rooms = new HTWRoom[7];
+    private int currentRoom = 0;
     private boolean gameRunning = true;
     private boolean gameFinished = false;
 
     public EscapeGame() {
        /** Einführungstext anzeigen */
       showIntroduction();
+      String heroName = playerNameInput();
+      this.hero = new Hero(heroName);
 
-        String heroName = playerNameInput();
-         this.hero = new Hero(heroName);
+      Lecturer lec1= new Lecturer (  " Herr Poeser",  
+      "Er ist schlank, hat kurz geschnittene grau/blonde Haare und ist stehts motiviert seinen Studenten zu helfen.");
+      Lecturer lec2= new Lecturer (" Frau fitri", 
+      "");
+      Lecturer lec3= new Lecturer ( "",  
+      "");
+      Lecturer lec4= new Lecturer  ("", 
+       "");
+      Lecturer lec5= new Lecturer ("",
+      "");
+      Lecturer lec6= new Lecturer ( "",  
+      "");
+      Lecturer lec7= new Lecturer (" Frau Majunkte",  
+      "Sie ist eine sehr sympathische und hilfsbereite Übungsleiterin.");
+      
+
+
+
+      rooms = new HTWRoom [7];
+      rooms [0]  = new HTWRoom ( "Haupteingang (Gebäude A)",
+        " "
+       ),;
+      rooms [1] = new HTWRoom ("Cafeteria (Gebäude B)");
+      rooms [2] = new HTWRoom ("PC-Pool (A142)", );
+      rooms [3] = new HTWRoom ("Bibliothek (Gebäude A)");
+      rooms [4] = new HTWRoom ("Seminarraumb(A219)");
+      rooms [5] = new HTWRoom ("Sporthalle");
+      rooms [6] = new HTWRoom ( "Audimax (A238)");
+
+      this.hero = new Hero(heroName);
+
+        
     }
+    
     private void showIntroduction() {
         System.out.println("Willkommen zum HTW Escape Game! NO WAY OUT!");
         System.out.println("Folgendes Szenario erwartet dich :");
