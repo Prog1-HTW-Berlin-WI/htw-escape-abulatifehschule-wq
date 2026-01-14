@@ -12,16 +12,26 @@ public class HTWRoom implements  Serializable{
     // Speicherung als Datei (Serialisierung) und beim Laden (Deserialisierung)
     // konsistent bleibt und Versionierungsprobleme vermieden werden.
     private static final long serialVersionUID = 9065680017147292999L;
-}
+
 private String identifier;
 private String description;
 private Lecturer lecturer;
 
+/**
+ *  Konstruktor der Klasse HTWRoom
+ * @param identifier
+ * @param description
+ * @param lecturer
+ */
 public HTWRoom(String identifier, String description, Lecturer lecturer){
     this.identifier = identifier;
     this.description = description;
     this.lecturer = lecturer;
 }
+    /**
+     * Methode um anzuzeigen in welchem Raum man sich befindet.
+     * Raumname, Beschreibung und Übungsleiter(falls vorhanden) werden angezeigt.
+     */
 
     public void showRoom(){
         System.out.println("==================================================");
@@ -51,6 +61,8 @@ public String getDescription(){
 }
 public Lecturer getLecturer(){
     return this.lecturer;
+}
+
 }
 
 
