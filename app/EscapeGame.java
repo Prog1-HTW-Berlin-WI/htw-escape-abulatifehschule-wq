@@ -1,7 +1,7 @@
 import java.util.Scanner;
-/**import model.Hero;
+import model.Hero;
 import model.HTWRoom;
-/**
+/** 
  * Klasse EscapeGame repräsentiert das Spiel selbst. Sie verwaltet den Spieler, die Räume und den Spielzustand.
  * Sie enthält die Methoden bzw. Logik zum Ausführen des Spiels.
  * @author Aya Abu-Latifeh
@@ -11,11 +11,13 @@ public class EscapeGame {
     private  Hero hero;
     private  HTWRoom[] rooms = new HTWRoom[7];
     private int currentRoom = 0;
+    private int currentRound = 1;
     private boolean gameRunning = true;
     private boolean gameFinished = false;
 
     public EscapeGame() {
        /** Einführungstext anzeigen */
+       this.rooms = new HTWRoom[7];
       showIntroduction();
       String heroName = playerNameInput();
       this.hero = new Hero(heroName);
@@ -43,6 +45,104 @@ public class EscapeGame {
 
         
     }
+     public void run(){
+        Scanner scanner = new Scanner(System.in);
+         while(this.gameRunning && !this.gameFinished){
+            
+          System.out.println("======================================================================");
+           System.out.println("DEIN AKTUELLER RAUM:" + rooms[currentRoom].getIdentifier());
+          System.out.println("======================================================================");
+          System.out.println("Was möchtest du tun?");
+          System.out.println("[1]  HTW erkunden");
+          System.out.println("[2] Hero Status anzeigen");
+          System.out.println("[3] Laufzettel anzeigen");
+          System.out.println("[4] Verschnaufpause machen");
+          System.out.println("[5] Spiel beenden");
+          System.out.println("======================================================================");
+
+           System.out.println( "Eingabe: ");
+          String eingabe = scanner.nextLine();
+
+            switch (eingabe) {
+                case "1":
+            if (currentRoom < rooms.length -1){
+                currentRoom++;
+                System.out.println (" Du betrittst nun den Raum: ");
+                rooms[currentRoom].showRoom();
+        
+        }else{
+            System.out.println("Du befindest dich bereits im letzten Raum!.");
+            rooms[currentRoom].showRoom();
+        }
+        break;
+
+        case "2":
+            System.out.println("===== HERO STATUS =====");
+            System.out.println("Name: " + hero.getName());
+            System.out.println("HP: " + hero.getHealthPoints() + "/ 50");
+            System.out.println("XP: " + hero.getExperiencePoints());
+            System.out.println("Runde: " + this.currentRound + "/ 24");
+            System.out.println("=========================");
+        
+         break;
+       
+         case "3":
+            System.out.println("====== LAUFZETTEL ======");
+            int signaturesCount = 0;
+     
+            for (int i = 0; i < rooms.length; i++) {
+                Lecturer lecturer = rooms [i].getLecturer();
+            if (lecturer != null){
+            if (lecturer.hasSigned()){
+                System.out.println( "[X]" + lecturer.getName());
+                signaturesCount++;
+            }else {
+                System.out.println( "[ ]" + lecturer.getName());
+            }   
+
+        }
+     }
+     System.out.println("Gesammelte Unterschriften: " + signaturesCount + "/6");
+      System.out.println("=============================");  
+            break;
+            
+            case "4":
+                System.out.println("======= VERSCHNAUFPAUSE =======");
+                System.out.println("[1] Kleine Pause (3 HP, schneller Rundenfortschritt)");
+                System.out.println("[2] Lange Pause (10 HP, kostet 1 Runde)");
+                System.out.println("=================================");
+                System.out.print("Eingabe: ");
+                String pauseInput = scanner.nextLine();
+
+
+               if(pauseInput.equals("1")){
+                hero.regenerate(false);
+                System.out.println("Du setzt dich für eine kleine Pause auf die Bank im Flur.");
+
+               }else if (pauseInput.equals("2")){
+                hero.regenerate(true);
+                this.currentRound++;
+                System.out.println(" Eine lange Pause tut dir gut und du fühlst dich gestärkt.");
+               }else{
+                 System.out.println("Du hast dich gegen eine Pause entschieden");
+               }
+               System.out.println("Aktuelle Lebenspunkte: " + hero.getHealthPoints() + "/50");
+               break;
+
+               case "5":
+                System.out.println("Das Spiel wird beendet und du kehrst zum Hauptmenü zurück.");
+                this.gameRunning = false;
+                break;
+
+                default:
+                    System.out.println("Ungültige Eingabe. Bitte gib eine Zahl zwischen 1-5 ein.");
+                break;
+         }
+    }
+}
+
+
+
     
     private void showIntroduction() {
         System.out.println("Willkommen zum HTW Escape Game! NO WAY OUT!");
@@ -67,7 +167,9 @@ public class EscapeGame {
     return heroName;
    
     }
+    
 
+    
 
 
     public boolean isGameRunning() {
@@ -85,13 +187,11 @@ public class EscapeGame {
     public void setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
     }
-
-    public void run() {
-        System.out.println("Das Spiel läuft jetzt....");
-        
- }
+ 
      
     public Hero getHero() {
         return hero;
     }
 }
+
+

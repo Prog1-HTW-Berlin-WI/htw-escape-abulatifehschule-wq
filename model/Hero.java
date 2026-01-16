@@ -139,13 +139,19 @@ public void addExperiencePoints(int experiencePoints){
 public int getExperiencePoints(){
     return experiencePoints;
 }
+
+
 /**
- * Gibt den Namen des Spielers/Helden zurück.
+ * Gibt den Namen des Spielers/Heldenzurück.
  * @return Name des Spielers
  */
 public String getName(){
     return name;
 }
+public int getHealthPoints(){
+    return healthPoints;
 
+
+}
 }
 

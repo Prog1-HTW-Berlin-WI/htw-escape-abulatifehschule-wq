@@ -174,7 +174,7 @@ public class EscapeApp {
             oos.writeObject(game);
             oos.flush();
         } catch (Exception ex) {
-            System.err.println("Es ist ein Fehler beim Speichern des Spiels aufgetreten " + ex.getMessage());
+            System.out.println("Es ist ein Fehler beim Speichern des Spiels aufgetreten " + ex.getMessage());
             return;
         }
         System.out.println("Spiel gespeichert!");
@@ -189,7 +189,7 @@ public class EscapeApp {
             System.out.println("Spiel geladen!");
             resumeGame();
         } catch (Exception ex) {
-            System.err.println("Es ist ein Fehler beim Laden des Spiels aufgetreten: " + ex.getMessage());
+            System.out.println("Es ist ein Fehler beim Laden des Spiels aufgetreten: " + ex.getMessage());
         }
     }
     /** prüft ob ein Spiel läuft
