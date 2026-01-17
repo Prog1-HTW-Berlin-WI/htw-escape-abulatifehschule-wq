@@ -17,7 +17,7 @@ public class EscapeGame {
 
     public EscapeGame() {
        /** Einführungstext anzeigen */
-       this.rooms = new HTWRoom[7];
+       this.rooms = new HTWRoom[6];
       showIntroduction();
       String heroName = playerNameInput();
       this.hero = new Hero(heroName);
@@ -31,7 +31,7 @@ public class EscapeGame {
 
 
 
-      rooms = new HTWRoom [5];
+      rooms = new HTWRoom [6];
       rooms [0]  = new HTWRoom ( "Haupteingang (Gebäude A)", " Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",  null);
       rooms [1] = new HTWRoom ("Cafeteria (Gebäude D)" , " Du stehst vor der Cafeteria. Sobald du rein kommst erwarten dich weitere Etagen, du entscheidest dich in die Mensa zu gehen. Der rechte Eingang führt dich zu den vielen Sitzmöglichkeiten mit den großen Fensterfronten, links ist der Buffet Bereich und den Kaffeautomaten. Es ist sehr ruhig und düster.",  lec1);
       rooms [2] = new HTWRoom ("PC-Pool (A142)", "Der helle Raum ist normalerweise voller Studenten, die an ihren Computern arbeiten. Heute ist es jedoch still und verlassen. Am anfang des Raumes befindet sich direkt der Dozententisch hinter dem dann die weiteren Reihen mit jeweils 4 Pcs.", lec2);
@@ -47,7 +47,16 @@ public class EscapeGame {
      public void run(){
         Scanner scanner = new Scanner(System.in);
          while(this.gameRunning && !this.gameFinished){
-            
+
+          if(currentRound > 24){
+            System.out.println("=========================================================");
+            System.out.println("DEINE ZEIT IST ABGELAUFEN! DU HAST VERLOREN!");
+            System.out.println("ES STELLT SICH HERAUS, FRAU MAJUNKTE IST IN WAHRHEIT EIN ALIEN UND FLIEGT MIT IHREM RAUMSCHIFF DAVON!");
+            System.out.println("WAS MIT DER HTW PASSIERT WEISS NIEMAND.....");
+            System.out.println("=========================================================");
+            this.gameFinished = true;
+          }
+
           System.out.println("======================================================================");
            System.out.println("DEIN AKTUELLER RAUM:" + rooms[currentRoom].getIdentifier());
           System.out.println("======================================================================");
@@ -66,12 +75,69 @@ public class EscapeGame {
                 case "1":
             if (currentRoom < rooms.length -1){
                 currentRoom++;
+                currentRound++;
                 System.out.println (" Du betrittst nun den Raum: ");
-                rooms[currentRoom].showRoom();
+                
+                int AlienZufall = (int) (Math.random() * 100 + 1);
+                 if (AlienZufall <= 20){
+                    System.out.println("======================================================");
+                    System.out.println(" ERKUNDUNG WAR EREIGNISLOS!");
+                    System.out.println("=======================================================");
+
+                 }
+                /**  else if(AlienZufall <= 72 ){
+                    System.out.println("==================================================================");
+                    System.out.println(" ACHTUNG! ALIEN BEGEGNUNG!");
+                    System.out.println("==================================================================");
+
+                    boolean istFeindlich = Math.random() < 0.5;
+
+                    if (istFeindlich){
+                        System.out.println(" ES HANDELT SICH UM EIN FEINDLICHES ALIEN!!!");
+                        System.out.println(" Du hast die Wahl zu kämpfen oder zu fliehen.");
+
+                    }else{
+                        System.out.println("GLÜCK GEHABT! DAS ALIEN IST FREUNDLICH!!");
+                        //ERGÄNZUNG KOMMT KREATIV 
+                    }
+                */
+
+                }else{
+                    System.out.println ("========================================================");
+                    System.out.println("DU TRIFFST AUF EIN ÜBUNGSLEITER!");
+                    System.out.println("==========================================================");
+                    Lecturer l = rooms[currentRoom].getLecturer();
+                    if (l != null){
+                        if (l.hasSigned()){
+                            System.out.println("Hey,dich kenn ich doch schon, du hast ja schon meine Unterschrift erhalten!");
+
+                        }else{
+                            if (hero.getExperiencePoints()>=5){
+                                l.sign();
+                                System.out.println(l.getName() + "Super, du hast genug Erfahrung mit Aliens gesammelt");
+                                System.out.println(" Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
+                                 
+                                
+
+                            }else{
+                                System.out.println(" Es tut mir leid, du hast nicht genug Erfahrung mit Aliens gesammelt.");
+                                System.out.println(" Du musst noch mehr Erfahrungen im kämpfen mit feindlichen Aliens sammeln.");
+                                System.out.println("Erkunde die HTW weiter um auf ein feindliches Alien zu treffen");
+                            }
+
+                        }
+                    }else{
+                        System.out.println("In diesem Raum befindet sich leider kein Übungsleiter.");
+                        System.out.println("Bitte erkunde die HTW weiter um auf ein Übungsleiter zu treffen!");
+
+                    }
+                        
+                    }
+                }
         
-        }else{
+        }else{ 
             System.out.println("Du befindest dich bereits im letzten Raum!.");
-            rooms[currentRoom].showRoom();
+            
         }
         break;
 
@@ -191,6 +257,7 @@ public class EscapeGame {
     public Hero getHero() {
         return hero;
     }
-}
+
+
 
 
