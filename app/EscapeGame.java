@@ -14,9 +14,16 @@ public class EscapeGame {
     private int currentRound = 1;
     private boolean gameRunning = true;
     private boolean gameFinished = false;
+    
 
+    /**
+     * Konstruktor der Klasse EscapeGame
+     * Initialisiert Array der Räume
+     * Erstellung aller Übungsleiter und weist sie den Räumen zu
+     * Einführung wird angezeigt und der Held erstellt.
+     */
     public EscapeGame() {
-       /** Einführungstext anzeigen */
+
        this.rooms = new HTWRoom[6];
       showIntroduction();
       String heroName = playerNameInput();
@@ -44,6 +51,11 @@ public class EscapeGame {
 
         
     }
+    /**
+     * Die Hauptmethode des Spiels
+     * beinhaltet die while-Schleife, die so lange läuft bis das Spiel beendet wird.
+     * Hier werden Benutzereingaben verarbeitet, Runden gezählt und Zufallsereignisse ausgelöst.
+     */
      public void run(){
         Scanner scanner = new Scanner(System.in);
          while(this.gameRunning && !this.gameFinished){
@@ -144,7 +156,7 @@ public class EscapeGame {
         case "2":
             System.out.println("===== HERO STATUS =====");
             System.out.println("Name: " + hero.getName());
-            System.out.println("HP: " + hero.getHealthPoints() + "/ 50");
+            System.out.println("HP: " + hero.getHealthPoints() + "/50");
             System.out.println("XP: " + hero.getExperiencePoints());
             System.out.println("Runde: " + this.currentRound + "/ 24");
             System.out.println("=========================");
@@ -204,11 +216,11 @@ public class EscapeGame {
                 break;
          }
     }
-}
 
 
 
-    
+
+    /*Einführungstext */
     private void showIntroduction() {
         System.out.println("Willkommen zum HTW Escape Game! NO WAY OUT!");
         System.out.println("Folgendes Szenario erwartet dich :");
@@ -222,7 +234,10 @@ public class EscapeGame {
         System.out.println("Viel Glück!");
         System.out.println("==================================================================");
     }
-  
+    /**
+     * Hier muss der Spieler seinem Helden einem Namen geben
+     * @return Der Name des Spielers als String
+     */
     private String playerNameInput() {
     System.out.println (" Bitte gebe deinem Helden einen Namen: ");
     Scanner scanner = new Scanner(System.in);
@@ -236,24 +251,39 @@ public class EscapeGame {
 
     
 
-
+/**
+ * prüft ob das aktuelle Spiel läuft.
+ * @return true wenn das Spiel läuft ansonsten false.
+ */
     public boolean isGameRunning() {
         return gameRunning;
     }
-
+    /**
+     * Status, ob Spiel läuft
+     * @param gameRunning true um zu starte und false zum stoppen.
+     */
     public void setGameRunning(boolean gameRunning) {
         this.gameRunning = gameRunning;
     }
-
+    /**
+     * Prüft ob Spiel verloren oder gewonnen wurde.
+     * @return true wenn das Spiel beendet ist
+     */
     public boolean isGameFinished() {
         return gameFinished;
     }
-
+    /**
+     * Status, ob Spiel beendet ist.
+     * @param gameFinished true, wenn das Spiel vorbei ist.
+     */
     public void setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
     }
  
-     
+     /**
+      *  Gibt Helden Objekt zurück.
+      * @return Held des Spiels.
+      */
     public Hero getHero() {
         return hero;
     }
