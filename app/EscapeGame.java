@@ -27,19 +27,18 @@ public class EscapeGame {
       Lecturer lec3= new Lecturer ("Herr Gnaoui",  "Er hat eine kurze, dunkelbraune Frisue und ist sehr freundlich.");
       Lecturer lec4= new Lecturer ("Frau Gärtner", "Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da."); 
       Lecturer lec5= new Lecturer ("Frau Vaseva",  " fehlt eine Beschreibung noch");
-      Lecturer lec6= new Lecturer ("Frau Majunkte","Sie hat braune auch bis zur Schulterlange Haare, trägt ebenfalls eine Brille und hat ein strahelnd weißes Lächeln. ");
       
 
 
 
-      rooms = new HTWRoom [7];
+      rooms = new HTWRoom [5];
       rooms [0]  = new HTWRoom ( "Haupteingang (Gebäude A)", " Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",  null);
       rooms [1] = new HTWRoom ("Cafeteria (Gebäude D)" , " Du stehst vor der Cafeteria. Sobald du rein kommst erwarten dich weitere Etagen, du entscheidest dich in die Mensa zu gehen. Der rechte Eingang führt dich zu den vielen Sitzmöglichkeiten mit den großen Fensterfronten, links ist der Buffet Bereich und den Kaffeautomaten. Es ist sehr ruhig und düster.",  lec1);
       rooms [2] = new HTWRoom ("PC-Pool (A142)", "Der helle Raum ist normalerweise voller Studenten, die an ihren Computern arbeiten. Heute ist es jedoch still und verlassen. Am anfang des Raumes befindet sich direkt der Dozententisch hinter dem dann die weiteren Reihen mit jeweils 4 Pcs.", lec2);
       rooms [3] = new HTWRoom ("Bibliothek (Gebäude A)", "Der Raum ist ruhig wie immer doch heute ist es irgendwie stiller als sonst.Es gibt unzählige Regale mit Büchern zu den verschiedensten Themen. In der Mitte der Bibliothek  befinden sich  weitere Sitzplätze und Tische für die Studenten zum lernen.", lec4);
       rooms [4] = new HTWRoom ("Seminarraumb(A219)", " Der Seminarraum ist im gegensatz zu anderen Räumen größer, mit vielen Tischreihe  und einer Tafel vorne", lec5);
       rooms [5] = new HTWRoom ("Sporthalle", "Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden. U ", lec3);
-      rooms [6] = new HTWRoom ( "Audimax (A238)", "Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel", lec6);
+      
       
       
 
@@ -102,7 +101,7 @@ public class EscapeGame {
 
         }
      }
-     System.out.println("Gesammelte Unterschriften: " + signaturesCount + "/6");
+     System.out.println("Gesammelte Unterschriften: " + signaturesCount + "/5");
       System.out.println("=============================");  
             break;
             
