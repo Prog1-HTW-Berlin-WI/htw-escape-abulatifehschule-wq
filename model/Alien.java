@@ -17,5 +17,33 @@ public abstract class Alien {
     private boolean friendly;
     private String greeting;
 
-    public Alien 
+    public Alien(String name, int lifePoints, boolean friendly, String greeting) {
+        this.name = name;
+        this.lifePoints = lifePoints;
+        this.friendly = friendly;
+        this.greeting = greeting;
+    }
+    /**
+     * Reduziert die Lebenspunkte des Aliens um angegebenen Wert.
+     * Wenn die Lebenspunkte danach weniger als 0 betragen, werden sie auf 0 gesetzt.
+     * @param amount Schadenswert, um den die Lebenspunkte reduziert werden
+     */
+    public void takeDamage(int amount) {
+        this.lifePoints -= amount;
+
+        if(this.lifePoints < 0) {
+            this.lifePoints = 0;
+        }
+
+        System.out.println(this.name + " hat einen Schaden von " + amount + " erlitten!");
+        System.out.println("Du hast noch: " + this.lifePoints + " Lebenspunkte über.");
+    }
+    /**
+     * Gibt an, ob Alien noch handlungsfähig ist.
+     * @return true, wenn Lebenspunkte 0 oder weniger betragen
+     */
+    public boolean isDefeated() {
+        return this.lifePoints <= 0;
+    }
+    
 }
