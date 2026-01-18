@@ -96,8 +96,7 @@ public class EscapeGame {
                     System.out.println(" ERKUNDUNG WAR EREIGNISLOS!");
                     System.out.println("=======================================================");
 
-                 }
-                /**  else if(AlienZufall <= 72 ){
+                 }  else if(AlienZufall <= 72 ){
                     System.out.println("==================================================================");
                     System.out.println(" ACHTUNG! ALIEN BEGEGNUNG!");
                     System.out.println("==================================================================");
@@ -112,7 +111,6 @@ public class EscapeGame {
                         System.out.println("GLÜCK GEHABT! DAS ALIEN IST FREUNDLICH!!");
                         //ERGÄNZUNG KOMMT KREATIV 
                     }
-                */
 
                 }else{
                     System.out.println ("========================================================");

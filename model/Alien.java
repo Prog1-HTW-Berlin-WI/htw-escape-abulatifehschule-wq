@@ -45,5 +45,18 @@ public abstract class Alien {
     public boolean isDefeated() {
         return this.lifePoints <= 0;
     }
-    
+
+    public String getName() {
+        return this.name;
+    }
+    public int getLifePoints() {
+        return this.lifePoints;
+    }
+    public boolean getFriendly() {
+        return this.friendly;
+    }
+    public String getGreeting() {
+        return this.greeting;
+    }
+ 
 }
