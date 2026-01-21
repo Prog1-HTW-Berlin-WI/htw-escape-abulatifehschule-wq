@@ -286,6 +286,8 @@ public class EscapeGame {
         return hero;
     }
 
+}    
+
 
 
 
