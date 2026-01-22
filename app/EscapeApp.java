@@ -144,8 +144,12 @@ public class EscapeApp {
       * Anschließend wird mit resumeGame() das Spiel gestartet.
       */
     private void startGame() {
+        System.out.println("Es wird ein neues Spiel gestartet...");
         this.game = new EscapeGame();
-        resumeGame();
+        this.game.setGameRunning(true);
+        this.game.run();
+
+    
 
     }
     /** Setzt das Spiel fort

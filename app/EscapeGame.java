@@ -185,6 +185,7 @@ public class EscapeGame {
                 System.out.println("======= VERSCHNAUFPAUSE =======");
                 System.out.println("[1] Kleine Pause (3 HP, schneller Rundenfortschritt)");
                 System.out.println("[2] Lange Pause (10 HP, kostet 1 Runde)");
+                System.out.println("Bei anderer Eingabe entscheidest du dich gegen eine Pause");
                 System.out.println("=================================");
                 System.out.print("Eingabe: ");
                 String pauseInput = scanner.nextLine();
