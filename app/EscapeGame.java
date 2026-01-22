@@ -138,7 +138,28 @@ public class EscapeGame {
                                 String wahl = scanner.nextLine();
 
                                 if (wahl.equals("1")) {
+                                    while (hero.isOperational() && !alien.isDefeated()) {
+                                        System.out.println("====================================");
+                                        System.out.println("Drücke ENTER wenn du bereit bist anzugreifen!!");
+                                        scanner.nextLine();
 
+                                        int damage = hero.attack();
+                                        alien.takeDamage(damage);
+                                        System.out.println("YAYYY! Du hast das Alien mit " + damage + " Schaden erfolgreich getroffen.");
+
+                                        if(!alien.isDefeated()) {
+                                            System.out.println("Das Alien gibt auf!");
+                                            hero.takeDamage(5);
+                                            System.out.println("Deine restlichen HP: " hero.getHealthPoints());
+                                        }
+                                    }
+                                    if(alien.isDefeated()) {
+                                        System.out.println("Du hast gewonnen! Du gewinnst 5 HP dazu.");
+                                        hero.addExperiencePoints(5);
+                                    }else{
+                                        System.out.println("Du hast verloren... ABER erhälst trotzdem 1 XP für den Einsatz");
+                                        hero.addExperiencePoints(1);
+                                    }
                                 }
 
                             } else {
