@@ -14,6 +14,7 @@ public class EscapeGame {
     private int currentRound = 1;
     private boolean gameRunning = true;
     private boolean gameFinished = false;
+    private boolean smallRestDone = false;
     
 
     /**
