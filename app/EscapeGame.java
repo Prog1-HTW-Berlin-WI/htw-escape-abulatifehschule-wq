@@ -27,7 +27,7 @@ public class EscapeGame {
      */
     public EscapeGame() {
 
-        this.rooms = new HTWRoom[6];
+        this.rooms = new HTWRoom[7];
         showIntroduction();
         String heroName = playerNameInput();
         this.hero = new Hero(heroName);
@@ -37,11 +37,16 @@ public class EscapeGame {
         Lecturer lec2 = new Lecturer("Frau safitri",
                 "hat lange Schwarze Haare,ein dunkleren Teint und wird von ihren Studenten als sehr nett beschrieben.");
         Lecturer lec3 = new Lecturer("Herr Gnaoui", "Er hat eine kurze, dunkelbraune Frisue und ist sehr freundlich.");
+
         Lecturer lec4 = new Lecturer("Frau Gärtner",
                 "Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da.");
         Lecturer lec5 = new Lecturer("Frau Vaseva", " fehlt eine Beschreibung noch");
 
-        rooms = new HTWRoom[6];
+        Lecturer lec6 = new Lecturer("Frau Majunkte",
+                "Sie hat kurze braune Haare, trägt ebenfalls eine Brille und hat strahlend weiße Zähne, welche sie ihren Studenten, durch ein Lächeln zeigt.");
+
+        rooms = new HTWRoom[7];
+
         rooms[0] = new HTWRoom("Haupteingang (Gebäude A)",
                 " Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",
                 null);
@@ -58,8 +63,12 @@ public class EscapeGame {
                 " Der Seminarraum ist im gegensatz zu anderen Räumen größer, mit vielen Tischreihe  und einer Tafel vorne",
                 lec5);
         rooms[5] = new HTWRoom("Sporthalle",
-                "Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden. U ",
+                "Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden.",
                 lec3);
+
+        rooms[6] = new HTWRoom("Audimax",
+                "Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel",
+                lec6);
 
     }
 
@@ -99,6 +108,7 @@ public class EscapeGame {
 
             switch (eingabe) {
                 case "1":
+
                     if (currentRoom < rooms.length - 1) {
                         currentRoom++;
                         currentRound++;
@@ -131,7 +141,7 @@ public class EscapeGame {
                                 String wahl = scanner.nextLine();
 
                                 if (wahl.equals("1")) {
-                                    
+
                                 }
 
                             } else {
