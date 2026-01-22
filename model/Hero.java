@@ -151,6 +151,21 @@ public class Hero implements Serializable {
     }
 
     /**
+     * Zählt die bereits gesammelten Unterschriften
+     * 
+     * @return Anzahl der beelgten Plätze im Array
+     */
+    public int getSignatureCount() {
+        int count = 0;
+        for (int i = 0; i < this.signedExerciseLeaders.length; i++) {
+            if (this.signedExerciseLeaders[i] != null) {
+                count++;
+            }
+        }
+        return count++;
+    }
+
+    /**
      * Gibt die aktuellen Wert der Erfahrungspunkte zurück.
      * 
      * @return Wert der XP

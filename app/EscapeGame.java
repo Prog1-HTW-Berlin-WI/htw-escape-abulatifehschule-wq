@@ -12,7 +12,7 @@ import model.HTWRoom;
  */
 public class EscapeGame {
     private Hero hero;
-    private HTWRoom[] rooms = new HTWRoom[7];
+    private HTWRoom[] rooms = new HTWRoom[6];
     private int currentRoom = 0;
     private int currentRound = 1;
     private boolean gameRunning = true;
@@ -27,7 +27,7 @@ public class EscapeGame {
      */
     public EscapeGame() {
 
-        this.rooms = new HTWRoom[7];
+        this.rooms = new HTWRoom[6];
         showIntroduction();
         String heroName = playerNameInput();
         this.hero = new Hero(heroName);
@@ -42,10 +42,7 @@ public class EscapeGame {
                 "Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da.");
         Lecturer lec5 = new Lecturer("Frau Vaseva", " fehlt eine Beschreibung noch");
 
-        Lecturer lec6 = new Lecturer("Frau Majunkte",
-                "Sie hat kurze braune Haare, trägt ebenfalls eine Brille und hat strahlend weiße Zähne, welche sie ihren Studenten, durch ein Lächeln zeigt.");
-
-        rooms = new HTWRoom[7];
+        rooms = new HTWRoom[6];
 
         rooms[0] = new HTWRoom("Haupteingang (Gebäude A)",
                 " Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",
@@ -65,10 +62,6 @@ public class EscapeGame {
         rooms[5] = new HTWRoom("Sporthalle",
                 "Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden.",
                 lec3);
-
-        rooms[6] = new HTWRoom("Audimax",
-                "Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel",
-                lec6);
 
     }
 
@@ -108,7 +101,11 @@ public class EscapeGame {
 
             switch (eingabe) {
                 case "1":
+                    if(hero.getSignatureCount()==5){
+                        startFinalMajunkte(scanner);
 
+                    }else if 
+                
                     if (currentRoom < rooms.length - 1) {
                         currentRoom++;
                         currentRound++;
