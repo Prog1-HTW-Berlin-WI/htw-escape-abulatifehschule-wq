@@ -119,8 +119,20 @@ public class EscapeGame {
                             boolean istFeindlich = Math.random() < 0.5;
 
                             if (istFeindlich) {
-                                System.out.println(" ES HANDELT SICH UM EIN FEINDLICHES ALIEN!!!");
-                                System.out.println(" Du hast die Wahl zu kämpfen oder zu fliehen.");
+                                System.out.println("============================================");
+                                System.out.println("ES HANDELT SICH UM EIN FEINDLICHES ALIEN!!!");
+                                System.out.println("Du hast die Wahl zu kämpfen oder zu fliehen:");
+                                System.out.println("[1] Kämpfen");
+                                System.out.println("[2] Fliehen");
+                                System.out.println("Bitte gib eine 1 oder 2 ein");
+                                System.out.println("============================================");
+                                System.out.println("Eingabe: ");
+
+                                String wahl = scanner.nextLine();
+
+                                if (wahl.equals("1")) {
+                                    
+                                }
 
                             } else {
                                 System.out.println("GLÜCK GEHABT! DAS ALIEN IST FREUNDLICH!!");
