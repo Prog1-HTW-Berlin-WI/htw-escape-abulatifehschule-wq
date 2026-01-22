@@ -89,6 +89,7 @@ public class EscapeGame {
             if (currentRoom < rooms.length -1){
                 currentRoom++;
                 currentRound++;
+                smallRestDone = false;
                 System.out.println (" Du betrittst nun den Raum: ");
                 
                 int AlienZufall = (int) (Math.random() * 100 + 1);
@@ -193,12 +194,18 @@ public class EscapeGame {
 
 
                if(pauseInput.equals("1")){
-                hero.regenerate(false);
-                System.out.println("Du setzt dich für eine kleine Pause auf die Bank im Flur.");
+                if(!smallRestDone) {
+                    hero.regenerate(false);
+                    smallRestDone = true;
+                    System.out.println("Du setzt dich für eine kleine Pause auf die Bank im Flur.");
+                }else{
+                    System.out.println("Du hast dich bereits ausgeruht! Erkunde die HTW erstmal weiter!");
+                }
 
-               }else if (pauseInput.equals("2")){
+               }else if(pauseInput.equals("2")) {
                 hero.regenerate(true);
                 this.currentRound++;
+                smallRestDone = true;
                 System.out.println(" Eine lange Pause tut dir gut und du fühlst dich gestärkt.");
                }else{
                  System.out.println("Du hast dich gegen eine Pause entschieden");
