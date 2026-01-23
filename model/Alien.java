@@ -41,7 +41,7 @@ public abstract class Alien {
         }
 
         System.out.println(this.name + " hat einen Schaden von " + amount + " erlitten!");
-        System.out.println("Du hast noch: " + this.lifePoints + " Lebenspunkte über.");
+        System.out.println("Das Alien hast noch: " + this.lifePoints + " Lebenspunkte über.");
     }
 
     /**

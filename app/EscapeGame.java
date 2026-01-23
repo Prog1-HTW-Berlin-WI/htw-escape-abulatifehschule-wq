@@ -133,6 +133,8 @@ public class EscapeGame {
                             boolean istFeindlich = Math.random() < 0.5;
 
                             if (istFeindlich) {
+                                FeindlichesAlien alien = new FeindlichesAlien();
+
                                 System.out.println("============================================");
                                 System.out.println("ES HANDELT SICH UM EIN FEINDLICHES ALIEN!!!");
                                 System.out.println("Du hast die Wahl zu kämpfen oder zu fliehen:");
@@ -144,6 +146,15 @@ public class EscapeGame {
 
                                 String wahl = scanner.nextLine();
 
+                                if (wahl.equals("2")) {
+                                    if (hero.flee()) {
+                                        System.out.println("Du rennst so schenll du kannst vor dem Alien weg UND ENTKOMMST!");
+                                        System.out.println("Nochmal Glück gehabt!");
+                                    }else{
+                                        wahl = "1";
+                                    }
+                                }
+
                                 if (wahl.equals("1")) {
                                     while (hero.isOperational() && !alien.isDefeated()) {
                                         System.out.println("====================================");
@@ -152,12 +163,11 @@ public class EscapeGame {
 
                                         int damage = hero.attack();
                                         alien.takeDamage(damage);
-                                        System.out.println("YAYYY! Du hast das Alien mit " + damage + " Schaden erfolgreich getroffen.");
 
                                         if(!alien.isDefeated()) {
-                                            System.out.println("Das Alien gibt auf!");
+                                            System.out.println(alien.getName() + " greift an!!");
                                             hero.takeDamage(5);
-                                            System.out.println("Deine restlichen HP: " hero.getHealthPoints());
+                                            System.out.println("Deine restlichen HP: " + hero.getHealthPoints());
                                         }
                                     }
                                     if(alien.isDefeated()) {
@@ -358,7 +368,7 @@ public class EscapeGame {
 
         };
 
-        String[] solutions = { B, A, C };
+        String[] solutions = {"B", "A", "C"};
         int randomNumber = (int) (Math.random() * questions.length);
 
         boolean passed = askQuestion(scanner, questions[randomNumber], answers[randomNumber], solutions[randomNumber]);
@@ -366,7 +376,7 @@ public class EscapeGame {
         if (!passed) {
             System.out.println("UPS, das war wohl nix!");
             System.out.println("Du hast jetzt noch eine zweite Chance, im zweitem Prüfungszeitraum");
-            int randomNumber = (int) (Math.random() * questions.length);
+            randomNumber = (int) (Math.random() * questions.length);
             passed = askQuestion(scanner, questions[randomNumber], answers[randomNumber], solutions[randomNumber]);
 
         }
@@ -383,12 +393,11 @@ public class EscapeGame {
             System.out.println("=====================================");
             System.out.println("'Leider schon wieder falsche Antwort! Sie sind durchgefallen.'");
             System.out.println(lec6.getName() + " zieht ihre Verkleidung aus und enttarnt sich als Alien!");
-            System.out
-                    .println("Sie steigt in ihr Raumschiff und ruft: 'Noch viel Glück mit meinen Freunden in der HTW!");
+            System.out.println("Sie steigt in ihr Raumschiff und ruft: 'Noch viel Glück mit meinen Freunden in der HTW!");
             System.out.println("Du bleibst allein zurück in der HTW gefangen...");
             System.out.println("GAME OVER");
             System.out.println("======================================");
-            this.isGameFinished = true;
+            this.gameFinished = true;
         }
     }
 

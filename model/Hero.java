@@ -185,6 +185,5 @@ public class Hero implements Serializable {
 
     public int getHealthPoints() {
         return healthPoints;
-
     }
 }
