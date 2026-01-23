@@ -74,8 +74,8 @@ public class EscapeGame {
      * Alien Begegnung Auswahl Kampf oder Flucht.
      * Anzeige aktueller Lebens - und Erfahrungspunkte.
      * Regeneration von Lebenspunkten.
-     * Beenden des Spiels 
-    
+     * Beenden des Spiels
+     * 
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -107,10 +107,10 @@ public class EscapeGame {
 
             switch (eingabe) {
                 case "1":
-                    if(hero.getSignatureCount()==5){
+                    if (hero.getSignatureCount() == 5) {
                         startFinalMajunkte(scanner);
 
-                    }else if(currentRoom < rooms.length - 1) {
+                    } else if (currentRoom < rooms.length - 1) {
                         currentRoom++;
                         currentRound++;
                         smallRestDone = false;
@@ -148,15 +148,18 @@ public class EscapeGame {
 
                                 if (wahl.equals("2")) {
                                     if (hero.flee()) {
-                                        System.out.println("Du rennst so schenll du kannst vor dem Alien weg UND ENTKOMMST!");
+                                        System.out.println(
+                                                "Du rennst so schenll du kannst vor dem Alien weg UND ENTKOMMST!");
                                         System.out.println("Nochmal Glück gehabt!");
-                                    }else{
+                                    } else {
                                         wahl = "1";
                                     }
                                 }
 
                                 if (wahl.equals("1")) {
-                                    while (hero.isOperational() && !alien.isDefeated()) {
+                                    boolean fluchtGelungen = false;
+
+                                    while (hero.isOperational() && !alien.isDefeated() && !fluchtGelungen) {
                                         System.out.println("====================================");
                                         System.out.println("Drücke ENTER wenn du bereit bist anzugreifen!!");
                                         scanner.nextLine();
@@ -164,18 +167,41 @@ public class EscapeGame {
                                         int damage = hero.attack();
                                         alien.takeDamage(damage);
 
-                                        if(!alien.isDefeated()) {
+                                        if (!alien.isDefeated()) {
                                             System.out.println(alien.getName() + " greift an!!");
                                             hero.takeDamage(5);
                                             System.out.println("Deine restlichen HP: " + hero.getHealthPoints());
                                         }
+                                        if (hero.isOperational() && !alien.isDefeated()) {
+                                            System.out.println("==================================");
+                                            System.out.println("Der Kampf ist noch nicht vorbei. Was willst du tun?");
+                                            System.out.println("[1] weiterkämpfen");
+                                            System.out.println("[2] Flüchten");
+                                            System.out.println("Eingabe:  ");
+                                            String entscheidung = scanner.nextLine();
+
+                                            if (entscheidung.equals("2")) {
+                                                if (hero.flee()) {
+                                                    System.out.println("Du bist entkommen!");
+                                                    fluchtGelungen = true;
+                                                } else {
+                                                    System.out
+                                                            .println("Flucht gescheitert! Du musst nochmal kämpfen...");
+                                                }
+                                            }
+                                        }
+
                                     }
-                                    if(alien.isDefeated()) {
+                                    if (alien.isDefeated()) {
                                         System.out.println("Du hast gewonnen! Du gewinnst 5 HP dazu.");
                                         hero.addExperiencePoints(5);
-                                    }else{
-                                        System.out.println("Du hast verloren... ABER erhälst trotzdem 1 XP für den Einsatz");
+                                    } else if (fluchtGelungen) {
+                                        System.out.println("Du stehst wieder im sicheren Flur.");
+                                    } else if (!hero.isOperational()) {
+                                        System.out.println(
+                                                "Du wurdest besiegt...ABER bekommst trotzdem noch 1 XP für den Einsatz.");
                                         hero.addExperiencePoints(1);
+                                        this.gameFinished = true;
                                     }
                                 }
 
@@ -368,7 +394,7 @@ public class EscapeGame {
 
         };
 
-        String[] solutions = {"B", "A", "C"};
+        String[] solutions = { "B", "A", "C" };
         int randomNumber = (int) (Math.random() * questions.length);
 
         boolean passed = askQuestion(scanner, questions[randomNumber], answers[randomNumber], solutions[randomNumber]);
@@ -393,7 +419,8 @@ public class EscapeGame {
             System.out.println("=====================================");
             System.out.println("'Leider schon wieder falsche Antwort! Sie sind durchgefallen.'");
             System.out.println(lec6.getName() + " zieht ihre Verkleidung aus und enttarnt sich als Alien!");
-            System.out.println("Sie steigt in ihr Raumschiff und ruft: 'Noch viel Glück mit meinen Freunden in der HTW!");
+            System.out
+                    .println("Sie steigt in ihr Raumschiff und ruft: 'Noch viel Glück mit meinen Freunden in der HTW!");
             System.out.println("Du bleibst allein zurück in der HTW gefangen...");
             System.out.println("GAME OVER");
             System.out.println("======================================");
