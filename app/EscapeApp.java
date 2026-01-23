@@ -85,7 +85,6 @@ public class EscapeApp {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
-        // TBD
         return userInput;
 
     }

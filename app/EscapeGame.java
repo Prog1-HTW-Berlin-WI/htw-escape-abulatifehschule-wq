@@ -40,7 +40,7 @@ public class EscapeGame {
 
         Lecturer lec4 = new Lecturer("Frau Gärtner",
                 "Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da.");
-        Lecturer lec5 = new Lecturer("Frau Vaseva", " fehlt eine Beschreibung noch");
+        Lecturer lec5 = new Lecturer("Frau Vaseva", "Sie ist klein,schlank und hat mittel lange Haare");
 
         rooms = new HTWRoom[6];
 
@@ -70,6 +70,12 @@ public class EscapeGame {
      * beinhaltet die while-Schleife, die so lange läuft bis das Spiel beendet wird.
      * Hier werden Benutzereingaben verarbeitet, Runden gezählt und
      * Zufallsereignisse ausgelöst.
+     * Anzeige des aktuellen Raums und die Aktionsmenüs.
+     * Alien Begegnung Auswahl Kampf oder Flucht.
+     * Anzeige aktueller Lebens - und Erfahrungspunkte.
+     * Regeneration von Lebenspunkten.
+     * Beenden des Spiels 
+    
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -104,13 +110,14 @@ public class EscapeGame {
                     if(hero.getSignatureCount()==5){
                         startFinalMajunkte(scanner);
 
-                    }else if 
-                
-                    if (currentRoom < rooms.length - 1) {
+                    }else if(currentRoom < rooms.length - 1) {
                         currentRoom++;
                         currentRound++;
                         smallRestDone = false;
-                        System.out.println(" Du betrittst nun den Raum: ");
+
+                        HTWRoom actualHtwRoom = rooms[currentRoom];
+                        System.out.println("Du betrittst nun den Raum: " + actualHtwRoom.getIdentifier());
+                        System.out.println(actualHtwRoom.getDescription());
 
                         int AlienZufall = (int) (Math.random() * 100 + 1);
                         if (AlienZufall <= 20) {
@@ -311,6 +318,100 @@ public class EscapeGame {
         System.out.println("Viel Erfolg, " + heroName + "!");
         return heroName;
 
+    }
+
+    /**
+     * Startet Finale des Spiels
+     * Begegnung mit Frau Majunkte
+     * Initialisierung des finalen Raumes und Frau Majunkte als Objekt.
+     * Zufällige Auswahl an Multiple-Choice-Fragen
+     * Überprüfung der Antwort
+     * 
+     * @param scanner zum Einlesen der Antwort des Spielers.
+     */
+    private void startFinalMajunkte(Scanner scanner) {
+        Lecturer lec6 = new Lecturer("Prof.Dr. Majunkte",
+                "Sie hat kurze braune Haare, trägt ebenfalls eine Brille und hat strahlend weiße Zähne, welche sie ihren Studenten, durch ein Lächeln zeigt.");
+        HTWRoom finalRoom = new HTWRoom("Audimax (A238)",
+                "Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel",
+                lec6);
+        System.out.println("=============================================================================");
+        System.out.println("YAYY GLÜCKWUNSCH !! DU HAST ES GESCHAFFT ALLE 5 UNTERSCHRIFTEN ZU SAMMELN");
+        System.out.println("Du betritts den Audimax und triffst auf Prof.Dr.Majunkte");
+        System.out.println(lec6.getDescription());
+        System.out.println("Hallo," + hero.getName() + ",du hast es fast geschafft der HTW zu entkommen");
+        System.out.println("Allerdings,musst du eine letzte Prüfung bei mir bestehen.");
+        System.out.println("Ich hoffe du hast fleißig in meinem Kurs, Grundlagen der Programmierung mitgemacht.");
+        System.out.println(
+                "Du musst die folgende Frage richtig beantworten, scheiterst du, hast du im zweiten Prüfungszeitraum noch eine letzte Chance");
+
+        String[] questions = {
+                "Welchen Datentyp verwenden Sie bei einer Reellen Zahl?",
+                "Wie deklariert man eine Variable mit dem Variablennamen zaehler vom Datentyp int?",
+                "Welche Schleife läuft garantiert mindestens einmal durch?"
+        };
+
+        String[][] answers = {
+                { "[A] String", "[B] int", "[C] double", "[D] boolean" },
+                { "[A] int zaehler;", "[B] double zaehler;", "[C] int count;", "[D] String zaheler;" },
+                { "[A] for-Schleife", "[B] while-Schleife", "[C] do-while-Schleife", "[D] if-Schleife" }
+
+        };
+
+        String[] solutions = { B, A, C };
+        int randomNumber = (int) (Math.random() * questions.length);
+
+        boolean passed = askQuestion(scanner, questions[randomNumber], answers[randomNumber], solutions[randomNumber]);
+
+        if (!passed) {
+            System.out.println("UPS, das war wohl nix!");
+            System.out.println("Du hast jetzt noch eine zweite Chance, im zweitem Prüfungszeitraum");
+            int randomNumber = (int) (Math.random() * questions.length);
+            passed = askQuestion(scanner, questions[randomNumber], answers[randomNumber], solutions[randomNumber]);
+
+        }
+        if (passed) {
+            System.out.println("======================================");
+            System.out.println(
+                    lec6.getName() + " freut sich für dich und sagt: 'Das war richtig! Du hast es geschafft.'");
+            System.out.println(lec6.getName() + " übergibt dir deine Urkunde und drückt auf einen Knopf!");
+            System.out.println("Alle Türe des HTW Gebäudes öffnen sich und Licht kommt herein");
+            System.out.println("Du hast das Spiel gewonnen!! Herzlichen Glückwunsch!");
+            System.out.println("======================================");
+            this.gameFinished = true;
+        } else {
+            System.out.println("=====================================");
+            System.out.println("'Leider schon wieder falsche Antwort! Sie sind durchgefallen.'");
+            System.out.println(lec6.getName() + " zieht ihre Verkleidung aus und enttarnt sich als Alien!");
+            System.out
+                    .println("Sie steigt in ihr Raumschiff und ruft: 'Noch viel Glück mit meinen Freunden in der HTW!");
+            System.out.println("Du bleibst allein zurück in der HTW gefangen...");
+            System.out.println("GAME OVER");
+            System.out.println("======================================");
+            this.isGameFinished = true;
+        }
+    }
+
+    /**
+     * Hilfsmethode, für Fragestellung sowie das prüfen der richtigen Antwort.
+     * Zeigt Frage und Antwortmöglichkeiten auf der Konsole.
+     * Vergleicht die Benutzereingabe mit der vorgegebenen richtigen Lösung.
+     * 
+     * @param scanner
+     * @param question
+     * @param answers
+     * @param solutions
+     * @return
+     */
+    private boolean askQuestion(Scanner scanner, String question, String[] answers, String solutions) {
+        System.out.println("Frage: " + question);
+        for (int i = 0; i < answers.length; i++) {
+            System.out.println(answers[i]);
+        }
+        System.out.println("Einagabe: ");
+        String input = scanner.nextLine();
+
+        return input.equals(solutions);
     }
 
     /**
