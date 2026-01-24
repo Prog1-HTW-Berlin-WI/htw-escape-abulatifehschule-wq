@@ -110,11 +110,19 @@ public class EscapeGame {
                     if (hero.getSignatureCount() == 5) {
                         startFinalMajunkte(scanner);
 
-                    } else if (currentRoom < rooms.length - 1) {
-                        currentRoom++;
+                    } else {
                         currentRound++;
                         smallRestDone = false;
 
+                        if (currentRoom < rooms.length - 1) {
+                            currentRoom++;
+
+                        } else {
+                            System.out.println(
+                                    "Du befindest dich bereits im letzten Raum, hast aber noch nicht alle Unterschriften.");
+                            currentRoom = 0;
+
+                        }
                         HTWRoom actualHtwRoom = rooms[currentRoom];
                         System.out.println("Du betrittst nun den Raum: " + actualHtwRoom.getIdentifier());
                         System.out.println(actualHtwRoom.getDescription());
@@ -211,11 +219,13 @@ public class EscapeGame {
                             }
 
                         } else {
-                            System.out.println("========================================================");
-                            System.out.println("DU TRIFFST AUF EIN ÜBUNGSLEITER!");
-                            System.out.println("==========================================================");
                             Lecturer l = rooms[currentRoom].getLecturer();
+
                             if (l != null) {
+                                System.out.println("========================================================");
+                                System.out.println("DU TRIFFST AUF EIN ÜBUNGSLEITER!");
+                                System.out.println("==========================================================");
+
                                 if (l.hasSigned()) {
                                     System.out.println(
                                             "Hey,dich kenn ich doch schon, du hast ja schon meine Unterschrift erhalten!");
@@ -245,9 +255,6 @@ public class EscapeGame {
                             }
 
                         }
-
-                    } else {
-                        System.out.println("Du befindest dich bereits im letzten Raum!.");
 
                     }
                     break;
