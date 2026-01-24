@@ -443,11 +443,11 @@ public class EscapeGame {
      * Zeigt Frage und Antwortmöglichkeiten auf der Konsole.
      * Vergleicht die Benutzereingabe mit der vorgegebenen richtigen Lösung.
      * 
-     * @param scanner
-     * @param question
-     * @param answers
-     * @param solutions
-     * @return
+     * @param scanner Scanner zum einlesen der Eingabe von der Konsole
+     * @param question Die Quizfrage als String
+     * @param answers Array von Strings, mit den unterschiedlichen Antwortmöglichkeiten 
+     * @param solutions Die korrekte Antwort 
+     * @return true, wenn Spielereingabe mit richtiger Lösung übereinstimmt, sonst false 
      */
     private boolean askQuestion(Scanner scanner, String question, String[] answers, String solutions) {
         System.out.println("Frage: " + question);
