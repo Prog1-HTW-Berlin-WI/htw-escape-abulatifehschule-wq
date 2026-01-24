@@ -32,36 +32,21 @@ public class EscapeGame {
         String heroName = playerNameInput();
         this.hero = new Hero(heroName);
 
-        Lecturer lec1 = new Lecturer(" Herr Poeser",
-                "Er ist schlank, hat kurz geschnittene grau/blonde Haare und ist stehts motiviert seinen Studenten zu helfen.");
-        Lecturer lec2 = new Lecturer("Frau safitri",
-                "hat lange Schwarze Haare,ein dunkleren Teint und wird von ihren Studenten als sehr nett beschrieben.");
+        Lecturer lec1 = new Lecturer(" Herr Poeser","Er ist schlank, hat kurz geschnittene grau/blonde Haare und ist stehts motiviert seinen Studenten zu helfen.");
+        Lecturer lec2 = new Lecturer("Frau safitri","hat lange Schwarze Haare,ein dunkleren Teint und wird von ihren Studenten als sehr nett beschrieben.");
         Lecturer lec3 = new Lecturer("Herr Gnaoui", "Er hat eine kurze, dunkelbraune Frisue und ist sehr freundlich.");
 
-        Lecturer lec4 = new Lecturer("Frau Gärtner",
-                "Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da.");
+        Lecturer lec4 = new Lecturer("Frau Gärtner","Sie hat braune schulterlange wellige Haare und trägt eine brille. Sie ist sehr hilfsbereit und ist bei Fragen immer für ihre Studenten da.");
         Lecturer lec5 = new Lecturer("Frau Vaseva", "Sie ist klein,schlank und hat mittel lange Haare");
 
         rooms = new HTWRoom[6];
 
-        rooms[0] = new HTWRoom("Haupteingang (Gebäude A)",
-                " Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",
-                null);
-        rooms[1] = new HTWRoom("Cafeteria (Gebäude D)",
-                " Du stehst vor der Cafeteria. Sobald du rein kommst erwarten dich weitere Etagen, du entscheidest dich in die Mensa zu gehen. Der rechte Eingang führt dich zu den vielen Sitzmöglichkeiten mit den großen Fensterfronten, links ist der Buffet Bereich und den Kaffeautomaten. Es ist sehr ruhig und düster.",
-                lec1);
-        rooms[2] = new HTWRoom("PC-Pool (A142)",
-                "Der helle Raum ist normalerweise voller Studenten, die an ihren Computern arbeiten. Heute ist es jedoch still und verlassen. Am anfang des Raumes befindet sich direkt der Dozententisch hinter dem dann die weiteren Reihen mit jeweils 4 Pcs.",
-                lec2);
-        rooms[3] = new HTWRoom("Bibliothek (Gebäude A)",
-                "Der Raum ist ruhig wie immer doch heute ist es irgendwie stiller als sonst.Es gibt unzählige Regale mit Büchern zu den verschiedensten Themen. In der Mitte der Bibliothek  befinden sich  weitere Sitzplätze und Tische für die Studenten zum lernen.",
-                lec4);
-        rooms[4] = new HTWRoom("Seminarraumb(A219)",
-                " Der Seminarraum ist im gegensatz zu anderen Räumen größer, mit vielen Tischreihe  und einer Tafel vorne",
-                lec5);
-        rooms[5] = new HTWRoom("Sporthalle",
-                "Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden.",
-                lec3);
+        rooms[0] = new HTWRoom("Haupteingang (Gebäude A)"," Dies ist der Haupteingang der HTW. Sobald man Eintritt und die ersten Stufen hochläuft siehst du die große Treppe, rechts von dir befindet sich der Studentenservice,doch dort scheint keiner zu sein.",null);
+        rooms[1] = new HTWRoom("Cafeteria (Gebäude D)"," Du stehst vor der Cafeteria. Sobald du rein kommst erwarten dich weitere Etagen, du entscheidest dich in die Mensa zu gehen. Der rechte Eingang führt dich zu den vielen Sitzmöglichkeiten mit den großen Fensterfronten, links ist der Buffet Bereich und den Kaffeautomaten. Es ist sehr ruhig und düster.", lec1);
+        rooms[2] = new HTWRoom("PC-Pool (A142)","Der helle Raum ist normalerweise voller Studenten, die an ihren Computern arbeiten. Heute ist es jedoch still und verlassen. Am anfang des Raumes befindet sich direkt der Dozententisch hinter dem dann die weiteren Reihen mit jeweils 4 Pcs.",lec2);
+        rooms[3] = new HTWRoom("Bibliothek (Gebäude A)","Der Raum ist ruhig wie immer doch heute ist es irgendwie stiller als sonst.Es gibt unzählige Regale mit Büchern zu den verschiedensten Themen. In der Mitte der Bibliothek  befinden sich  weitere Sitzplätze und Tische für die Studenten zum lernen.",lec4);
+        rooms[4] = new HTWRoom("Seminarraumb(A219)"," Der Seminarraum ist im gegensatz zu anderen Räumen größer, mit vielen Tischreihe  und einer Tafel vorne",lec5);
+        rooms[5] = new HTWRoom("Sporthalle","Ein Kalter Luftzug empfängt dich als du die Halle betritts. Es ist pure Stille. Das einzige was zu hören ist, sind  deine Schuhe auf dem Parkett Boden.",  lec3);
 
     }
 
@@ -193,8 +178,7 @@ public class EscapeGame {
                                                     System.out.println("Du bist entkommen!");
                                                     fluchtGelungen = true;
                                                 } else {
-                                                    System.out
-                                                            .println("Flucht gescheitert! Du musst nochmal kämpfen...");
+                                                    System.out.println("Flucht gescheitert! Du musst nochmal kämpfen...");
                                                 }
                                             }
                                         }
@@ -231,18 +215,15 @@ public class EscapeGame {
 
                                 if (hero.getExperiencePoints() >= 5) {
                                     l.sign();
+                                    hero.signExerciseLeader(l);
                                     System.out.println(
                                             l.getName() + " Super, du hast genug Erfahrung mit Aliens gesammelt");
-                                    System.out.println(
-                                            " Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
+                                    System.out.println(" Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
 
                                 } else {
-                                    System.out.print(
-                                            "Es tut mir leid, du hast nicht genug Erfahrung mit Aliens gesammelt.");
-                                    System.out.println(
-                                            "Du musst noch mehr Erfahrungen im kämpfen mit feindlichen Aliens sammeln.");
-                                    System.out
-                                            .println("Erkunde die HTW weiter um auf ein feindliches Alien zu treffen");
+                                    System.out.print("Es tut mir leid, du hast nicht genug Erfahrung mit Aliens gesammelt.");
+                                    System.out.println( "Du musst noch mehr Erfahrungen im kämpfen mit feindlichen Aliens sammeln.");
+                                    System.out.println("Erkunde die HTW weiter um auf ein feindliches Alien zu treffen");
                                 }
 
                             } else {
@@ -331,13 +312,10 @@ public class EscapeGame {
         System.out.println("Willkommen zum HTW Escape Game! NO WAY OUT!");
         System.out.println("Folgendes Szenario erwartet dich :");
         System.out.println("=======================================================");
-        System.out.println(
-                "Es ist ein ganz normaler Tag an der HTW Berlin, als plötzlich alle Türen verschlossen werden.");
-        System.out.println(
-                "Es führt kein Weg mehr hinaus. Deine Aufgabe ist es, Hinweise zu finden und Rätsel zu lösen, um zu entkommen.");
+        System.out.println("Es ist ein ganz normaler Tag an der HTW Berlin, als plötzlich alle Türen verschlossen werden.");
+        System.out.println("Es führt kein Weg mehr hinaus. Deine Aufgabe ist es, Hinweise zu finden und Rätsel zu lösen, um zu entkommen.");
         System.out.println("Der Schlüssel zum Ausgang  hat ausschließlich Frau Majunkte.");
-        System.out.println(
-                "Um sie zu finden, musst du jedoch vorher alle Übungsleiter finden und ihre Unterschrift sammeln.");
+        System.out.println( "Um sie zu finden, musst du jedoch vorher alle Übungsleiter finden und ihre Unterschrift sammeln.");
         System.out.println("Aber Achtung! Die HTW ist befallen von gefährlichen Kreaturen, die dich aufhalten können.");
         System.out.println("Sei vorsichtig und nutze deine Fähigkeiten, um zu überleben und zu entkommen!");
         System.out.println("Viel Glück!");
@@ -369,11 +347,8 @@ public class EscapeGame {
      * @param scanner zum Einlesen der Antwort des Spielers.
      */
     private void startFinalMajunkte(Scanner scanner) {
-        Lecturer lec6 = new Lecturer("Prof.Dr. Majunkte",
-                "Sie hat kurze braune Haare, trägt ebenfalls eine Brille und hat strahlend weiße Zähne, welche sie ihren Studenten, durch ein Lächeln zeigt.");
-        HTWRoom finalRoom = new HTWRoom("Audimax (A238)",
-                "Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel",
-                lec6);
+        Lecturer lec6 = new Lecturer("Prof.Dr. Majunkte","Sie hat kurze braune Haare, trägt ebenfalls eine Brille und hat strahlend weiße Zähne, welche sie ihren Studenten, durch ein Lächeln zeigt.");
+        HTWRoom finalRoom = new HTWRoom("Audimax (A238)","Der letzte Raum. Ein riesiger Hörsaal. Es wirkt so als würden dich tausend Blicke von den aufsteigenden braunfarbigen Reihen anschauen. Vorne am LehrerPult ist eine riesige Tafel",    lec6);
         System.out.println("=============================================================================");
         System.out.println("YAYY GLÜCKWUNSCH !! DU HAST ES GESCHAFFT ALLE 5 UNTERSCHRIFTEN ZU SAMMELN");
         System.out.println("Du betritts den Audimax und triffst auf Prof.Dr.Majunkte");
@@ -381,8 +356,7 @@ public class EscapeGame {
         System.out.println("Hallo," + hero.getName() + ",du hast es fast geschafft der HTW zu entkommen");
         System.out.println("Allerdings,musst du eine letzte Prüfung bei mir bestehen.");
         System.out.println("Ich hoffe du hast fleißig in meinem Kurs, Grundlagen der Programmierung mitgemacht.");
-        System.out.println(
-                "Du musst die folgende Frage richtig beantworten, scheiterst du, hast du im zweiten Prüfungszeitraum noch eine letzte Chance");
+        System.out.println( "Du musst die folgende Frage richtig beantworten, scheiterst du, hast du im zweiten Prüfungszeitraum noch eine letzte Chance");
 
         String[] questions = {
                 "Welchen Datentyp verwenden Sie bei einer Reellen Zahl?",
@@ -411,8 +385,7 @@ public class EscapeGame {
         }
         if (passed) {
             System.out.println("======================================");
-            System.out.println(
-                    lec6.getName() + " freut sich für dich und sagt: 'Das war richtig! Du hast es geschafft.'");
+            System.out.println(lec6.getName() + " freut sich für dich und sagt: 'Das war richtig! Du hast es geschafft.'");
             System.out.println(lec6.getName() + " übergibt dir deine Urkunde und drückt auf einen Knopf!");
             System.out.println("Alle Türe des HTW Gebäudes öffnen sich und Licht kommt herein");
             System.out.println("Du hast das Spiel gewonnen!! Herzlichen Glückwunsch!");
@@ -449,7 +422,7 @@ public class EscapeGame {
         for (int i = 0; i < answers.length; i++) {
             System.out.println(answers[i]);
         }
-        System.out.println("Einagabe: ");
+        System.out.println("Eingabe: ");
         String input = scanner.nextLine();
 
         return input.equals(solutions);
