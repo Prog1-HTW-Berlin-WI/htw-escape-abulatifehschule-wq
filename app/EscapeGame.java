@@ -221,7 +221,7 @@ public class EscapeGame {
                         } else {
                             Lecturer l = rooms[currentRoom].getLecturer();
 
-                            if (l != null) {
+                            if (l != null && !l.hasSigned()) {
                                 System.out.println("========================================================");
                                 System.out.println("DU TRIFFST AUF EIN ÜBUNGSLEITER!");
                                 System.out.println("=========================================================");
@@ -229,34 +229,27 @@ public class EscapeGame {
                                 System.out.println(l.getDescription());
                                 System.out.println("=========================================================");
 
-                                if (l.hasSigned()) {
+                                if (hero.getExperiencePoints() >= 5) {
+                                    l.sign();
                                     System.out.println(
-                                            "Hey,dich kenn ich doch schon, du hast ja schon meine Unterschrift erhalten!");
+                                            l.getName() + " Super, du hast genug Erfahrung mit Aliens gesammelt");
+                                    System.out.println(
+                                            " Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
 
                                 } else {
-                                    if (hero.getExperiencePoints() >= 5) {
-                                        l.sign();
-                                        System.out.println(
-                                                l.getName() + " Super, du hast genug Erfahrung mit Aliens gesammelt");
-                                        System.out.println(
-                                                " Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
-
-                                    } else {
-                                        System.out.println(
-                                                " Es tut mir leid, du hast nicht genug Erfahrung mit Aliens gesammelt.");
-                                        System.out.println(
-                                                " Du musst noch mehr Erfahrungen im kämpfen mit feindlichen Aliens sammeln.");
-                                        System.out.println(
-                                                "Erkunde die HTW weiter um auf ein feindliches Alien zu treffen");
-                                    }
-
+                                    System.out.print(
+                                            "Es tut mir leid, du hast nicht genug Erfahrung mit Aliens gesammelt.");
+                                    System.out.println(
+                                            "Du musst noch mehr Erfahrungen im kämpfen mit feindlichen Aliens sammeln.");
+                                    System.out
+                                            .println("Erkunde die HTW weiter um auf ein feindliches Alien zu treffen");
                                 }
+
                             } else {
                                 System.out.println("In diesem Raum befindet sich leider kein Übungsleiter.");
                                 System.out.println("Bitte erkunde die HTW weiter um auf ein Übungsleiter zu treffen!");
 
                             }
-
                         }
 
                     }
@@ -443,11 +436,13 @@ public class EscapeGame {
      * Zeigt Frage und Antwortmöglichkeiten auf der Konsole.
      * Vergleicht die Benutzereingabe mit der vorgegebenen richtigen Lösung.
      * 
-     * @param scanner Scanner zum einlesen der Eingabe von der Konsole
-     * @param question Die Quizfrage als String
-     * @param answers Array von Strings, mit den unterschiedlichen Antwortmöglichkeiten 
-     * @param solutions Die korrekte Antwort 
-     * @return true, wenn Spielereingabe mit richtiger Lösung übereinstimmt, sonst false 
+     * @param scanner   Scanner zum einlesen der Eingabe von der Konsole
+     * @param question  Die Quizfrage als String
+     * @param answers   Array von Strings, mit den unterschiedlichen
+     *                  Antwortmöglichkeiten
+     * @param solutions Die korrekte Antwort
+     * @return true, wenn Spielereingabe mit richtiger Lösung übereinstimmt, sonst
+     *         false
      */
     private boolean askQuestion(Scanner scanner, String question, String[] answers, String solutions) {
         System.out.println("Frage: " + question);
