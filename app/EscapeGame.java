@@ -224,7 +224,10 @@ public class EscapeGame {
                             if (l != null) {
                                 System.out.println("========================================================");
                                 System.out.println("DU TRIFFST AUF EIN ÜBUNGSLEITER!");
-                                System.out.println("==========================================================");
+                                System.out.println("=========================================================");
+                                System.out.println("Name: " + l.getName());
+                                System.out.println(l.getDescription());
+                                System.out.println("=========================================================");
 
                                 if (l.hasSigned()) {
                                     System.out.println(
@@ -234,7 +237,7 @@ public class EscapeGame {
                                     if (hero.getExperiencePoints() >= 5) {
                                         l.sign();
                                         System.out.println(
-                                                l.getName() + "Super, du hast genug Erfahrung mit Aliens gesammelt");
+                                                l.getName() + " Super, du hast genug Erfahrung mit Aliens gesammelt");
                                         System.out.println(
                                                 " Yayy! Du hast eine weitere Unterschrift auf deinem Laufzettel erhalten und bist dem Finale ein Schritt näher gekommen!");
 
