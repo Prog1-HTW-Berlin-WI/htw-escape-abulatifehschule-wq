@@ -123,7 +123,7 @@ public class EscapeApp {
                 if (isGameRunning() && !isGameFinished()) {
                     this.saveGame();
                 } else {
-                    System.out.println( "Es läuft kein Spiel oder das Spiel ist bereits beendet. Bitte starte ein neues Spiel.");
+                    System.out.println("Es läuft kein Spiel oder das Spiel ist bereits beendet. Bitte starte ein neues Spiel.");
 
                 }
                 break;

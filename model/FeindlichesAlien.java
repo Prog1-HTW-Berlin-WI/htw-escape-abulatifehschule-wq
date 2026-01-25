@@ -1,7 +1,7 @@
 /**
  * Eine konkrete Kindklasse von Alien.
- * 
  * @author Hanna Lübken
+ * @author Aya Abu-Latifeh
  */
 public class FeindlichesAlien extends Alien {
 
