@@ -69,8 +69,7 @@ public class EscapeGame {
             if (currentRound > 24) {
                 System.out.println("=========================================================");
                 System.out.println("DEINE ZEIT IST ABGELAUFEN! DU HAST VERLOREN!");
-                System.out.println(
-                        "ES STELLT SICH HERAUS, FRAU MAJUNKTE IST IN WAHRHEIT EIN ALIEN UND FLIEGT MIT IHREM RAUMSCHIFF DAVON!");
+                System.out.println("ES STELLT SICH HERAUS, FRAU MAJUNKTE IST IN WAHRHEIT EIN ALIEN UND FLIEGT MIT IHREM RAUMSCHIFF DAVON!");
                 System.out.println("WAS MIT DER HTW PASSIERT WEISS NIEMAND.....");
                 System.out.println("=========================================================");
                 this.gameFinished = true;
@@ -103,8 +102,7 @@ public class EscapeGame {
                             currentRoom++;
 
                         } else {
-                            System.out.println(
-                                    "Du befindest dich bereits im letzten Raum, hast aber noch nicht alle Unterschriften.");
+                            System.out.println( "Du befindest dich bereits im letzten Raum, hast aber noch nicht alle Unterschriften.");
                             currentRoom = 0;
 
                         }
@@ -141,8 +139,7 @@ public class EscapeGame {
 
                                 if (wahl.equals("2")) {
                                     if (hero.flee()) {
-                                        System.out.println(
-                                                "Du rennst so schenll du kannst vor dem Alien weg UND ENTKOMMST!");
+                                        System.out.println("Du rennst so schenll du kannst vor dem Alien weg UND ENTKOMMST!");
                                         System.out.println("Nochmal Glück gehabt!");
                                     } else {
                                         wahl = "1";
@@ -198,7 +195,7 @@ public class EscapeGame {
 
                             } else {
                                 System.out.println("GLÜCK GEHABT! DAS ALIEN IST FREUNDLICH!!");
-                                // ERGÄNZUNG KOMMT KREATIV
+
                             }
 
                         } else {
